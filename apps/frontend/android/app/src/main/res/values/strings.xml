@@ -1,0 +1,7 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SHIFT CAFE POS</string>
+    <string name="title_activity_main">SHIFT CAFE POS</string>
+    <string name="package_name">com.brewpos.app</string>
+    <string name="custom_url_scheme">com.brewpos.app</string>
+</resources>

@@ -1,0 +1,16 @@
+﻿{
+  "name": "brewpos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BrewPos — monorepo (backend API + Nuxt frontend + Playwright e2e)",
+  "workspaces": [
+    "apps/*",
+    "e2e"
+  ],
+  "scripts": {
+    "dev:backend": "npm --prefix apps/backend start",
+    "dev:frontend": "npm --prefix apps/frontend run dev",
+    "seed": "node apps/backend/seed.js",
+    "test:e2e": "node e2e/run-all.js"
+  }
+}

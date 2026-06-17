@@ -1,0 +1,13 @@
+﻿{
+  "name": "brewpos-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright end-to-end tests for the BrewPos",
+  "scripts": {
+    "test": "node run-all.js",
+    "test:smoke": "node smoke.test.js"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

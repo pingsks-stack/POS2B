@@ -1,0 +1,137 @@
+/* ===== Shift Cafe — Modern Light global theme ===== */
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+html,
+body,
+#app,
+.v-application {
+  font-family: 'Sarabun', sans-serif !important;
+}
+
+/* soft app background (theme-aware) */
+.theme--light.v-application {
+  background: #f4f6f8 !important;
+  color: #2b2f33;
+}
+.theme--dark.v-application {
+  background: #0f1115 !important;
+  color: #e6e8eb;
+}
+
+/* center page content + keep it symmetric on wide screens */
+.content-wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, .text-h4, .text-h5, .text-h6, .v-toolbar__title {
+  font-family: 'Mitr', sans-serif !important;
+  letter-spacing: 0;
+}
+
+/* cards: rounded + soft shadow */
+.v-application .v-card {
+  border-radius: 16px;
+}
+.v-sheet.v-card:not(.v-card--flat):not(.v-card--outlined) {
+  box-shadow: 0 6px 24px rgba(31, 41, 55, 0.06) !important;
+}
+
+/* buttons: rounded, no shouty uppercase */
+.v-application .v-btn {
+  text-transform: none;
+  letter-spacing: 0.2px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.v-application .v-btn--round { border-radius: 50%; }
+.v-application .v-btn.v-size--x-large { border-radius: 14px; }
+
+/* data tables: lighter header, comfy rows */
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  font-size: 0.8rem !important;
+  color: #8a9099 !important;
+  font-weight: 600 !important;
+  background: #fafbfc;
+  white-space: nowrap;
+}
+.v-data-table > .v-data-table__wrapper > table > tbody > tr:hover {
+  background: #f5f9f5 !important;
+}
+/* dark theme: data tables */
+.theme--dark .v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  background: #1b1e24;
+  color: #9aa0aa !important;
+}
+.theme--dark .v-data-table > .v-data-table__wrapper > table > tbody > tr:hover {
+  background: #20242b !important;
+}
+
+/* inputs slightly rounded */
+.v-application .v-text-field--outlined > .v-input__control > .v-input__slot,
+.v-application .v-text-field--filled > .v-input__control > .v-input__slot {
+  border-radius: 10px;
+}
+
+/* nicer scrollbars everywhere */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: #cfd4da;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover { background: #b3b9c0; background-clip: content-box; }
+.theme--dark *::-webkit-scrollbar-thumb { background: #3a3f47; background-clip: content-box; }
+.theme--dark *::-webkit-scrollbar-thumb:hover { background: #4a505a; background-clip: content-box; }
+
+/* page wrapper helper */
+.page-wrap { padding: 20px; }
+
+/* balanced masonry for settings cards (auto-balances column heights) */
+.settings-grid { column-count: 2; column-gap: 24px; }
+.settings-grid > .v-card {
+  width: 100%; display: inline-block;
+  break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid;
+}
+@media (max-width: 959px) { .settings-grid { column-count: 1; } }
+
+/* ===== animations ===== */
+/* animated success/error toast (plugins/toast.js) */
+#app-toast {
+  position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+  z-index: 9999; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; pointer-events: none;
+}
+.app-toast-item {
+  display: flex; align-items: center; gap: 10px;
+  background: #2e9c3f; color: #fff; padding: 10px 20px; border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22); font-weight: 600; font-size: 0.9rem;
+  opacity: 0; transform: translateY(-14px) scale(0.92);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1.25);
+}
+.app-toast-item.show { opacity: 1; transform: translateY(0) scale(1); }
+.app-toast-item.is-error { background: #e5484d; }
+.app-toast-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; background: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem; animation: toastPop 0.45s ease;
+}
+@keyframes toastPop { 0% { transform: scale(0); } 60% { transform: scale(1.35); } 100% { transform: scale(1); } }
+
+/* button press feedback (incl. เพิ่ม / บันทึก) */
+.v-application .v-btn { transition: transform 0.08s ease, box-shadow 0.2s ease, background-color 0.2s ease; }
+.v-application .v-btn:not(.v-btn--round):not(.v-btn--block):active { transform: scale(0.96); }
+
+/* card hover lift for clickable cards + KPIs */
+.v-application .v-card { transition: box-shadow 0.25s ease, transform 0.25s ease; }
+.v-application .v-card.kpi:hover,
+.v-application .v-card.cursor:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(31, 41, 55, 0.12) !important; }
+
+/* dialog pop-in (add/edit dialogs) */
+.v-dialog__content--active .v-dialog:not(.v-dialog--fullscreen) {
+  animation: dialogPop 0.26s cubic-bezier(0.2, 0.8, 0.3, 1.05);
+}
+@keyframes dialogPop { from { opacity: 0; transform: translateY(16px) scale(0.96); } to { opacity: 1; transform: none; } }

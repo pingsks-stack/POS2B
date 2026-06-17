@@ -1,0 +1,13 @@
+const { login, launch } = require('./lib')
+;(async () => {
+  const { browser, page } = await launch()
+  await login(page, 'admin')
+  await page.goto('http://localhost:3000/manage/product', { waitUntil: 'domcontentloaded' })
+  await page.getByText('เพิ่มสินค้า').first().waitFor()
+  await page.waitForTimeout(800)
+  await page.locator('.v-app-bar__nav-icon').first().click()
+  await page.waitForTimeout(700)
+  await page.screenshot({ path: 'mini-sidebar.png' })
+  await browser.close()
+  console.log('saved mini-sidebar.png')
+})()

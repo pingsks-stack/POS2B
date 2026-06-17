@@ -1,0 +1,35 @@
+﻿{
+  "name": "brew_pos",
+  "version": "1.0.0",
+  "description": "My premium Nuxt.js project",
+  "author": "James_Devfong",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt build",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt start",
+    "generate": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt generate",
+    "build:app": "cross-env NUXT_APP=1 STANDALONE=1 NODE_OPTIONS=--openssl-legacy-provider nuxt generate",
+    "build:app:server": "cross-env NUXT_APP=1 NODE_OPTIONS=--openssl-legacy-provider nuxt generate",
+    "cap:add": "cap add android",
+    "cap:sync": "cap sync android",
+    "cap:open": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/core": "^8.4.0",
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/moment": "^1.6.1",
+    "capacitor-thermal-printer": "^0.2.5",
+    "cross-env": "^5.2.0",
+    "moment": "^2.29.1",
+    "nuxt": "^2.0.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.0",
+    "@nuxtjs/vuetify": "^1.12.1",
+    "nodemon": "^1.11.0"
+  }
+}
